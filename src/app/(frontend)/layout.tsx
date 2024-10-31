@@ -12,20 +12,13 @@ const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body
-				className={cn("flex h-screen flex-col font-sans antialiased", fontSans.variable)}
-			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="dark"
-					enableSystem
-					disableTransitionOnChange
-				>
-					<header className="text-center">Header Goes Here</header>
+			<body className={cn("flex h-screen flex-col font-sans antialiased", fontSans.variable)}>
+				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+					<header>Header Goes Here</header>
 
 					<main>{children}</main>
 
-					<footer className="mt-auto text-center">Footer Goes Here</footer>
+					<footer className="mt-auto">Footer Goes Here</footer>
 				</ThemeProvider>
 			</body>
 		</html>

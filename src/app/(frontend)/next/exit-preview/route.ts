@@ -5,5 +5,5 @@ export async function GET(): Promise<Response> {
 
 	draftModeValue.disable();
 
-	return new Response("Draft mode is disabled");
+	return new Response("Draft mode is disabled.");
 }

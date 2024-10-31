@@ -1,12 +1,7 @@
-import {
-	HTMLConverterFeature,
-	InlineToolbarFeature,
-	lexicalEditor,
-	lexicalHTML,
-} from "@payloadcms/richtext-lexical";
+import { FixedToolbarFeature, InlineToolbarFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 
-import { anyone } from "@/payload-access/anyone";
-import { authenticated } from "@/payload-access/authenticated";
+import { anyone } from "@/payload/access/anyone";
+import { authenticated } from "@/payload/access/authenticated";
 
 import type { CollectionConfig } from "payload";
 
@@ -36,16 +31,14 @@ const Media: CollectionConfig = {
 			type: "richText",
 			editor: lexicalEditor({
 				features: ({ rootFeatures }) => {
-					return [...rootFeatures, HTMLConverterFeature({}), InlineToolbarFeature()];
+					return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()];
 				},
 			}),
 		},
-		/* converts the referenced lexical richText field into HTML */
-		lexicalHTML("caption", { name: "caption_html" }),
 	],
 	upload: {
 		mimeTypes: ["image/*"],
-		resizeOptions: { width: 1280 },
+		resizeOptions: { width: 1024 },
 	},
 };
 

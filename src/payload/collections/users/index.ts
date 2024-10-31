@@ -1,6 +1,6 @@
-import { authenticated } from "@/payload-access/authenticated";
+import { authenticated } from "@/payload/access/authenticated";
 
-import populateFullName from "@/payload-collections/users/hooks/populateFullName";
+import populateFullName from "@/payload/collections/users/hooks/populate-full-name";
 
 import type { CollectionConfig } from "payload";
 
@@ -51,7 +51,8 @@ const Users: CollectionConfig = {
 			label: "Full Name",
 			type: "text",
 			admin: {
-				hidden: true,
+				position: "sidebar",
+				readOnly: true,
 			},
 			hooks: {
 				beforeValidate: [populateFullName],

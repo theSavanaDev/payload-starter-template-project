@@ -6,10 +6,8 @@ import {
 	HeadingFeature,
 	ItalicFeature,
 	LinkFeature,
-	lexicalEditor,
-	OrderedListFeature,
 	UnderlineFeature,
-	UnorderedListFeature,
+	lexicalEditor,
 } from "@payloadcms/richtext-lexical";
 import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { seoPlugin } from "@payloadcms/plugin-seo";
@@ -19,8 +17,8 @@ import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
-import Media from "@/payload-collections/media";
-import Users from "@/payload-collections/users";
+import Media from "@/payload/collections/media";
+import Users from "@/payload/collections/users";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 
@@ -74,6 +72,7 @@ export default buildConfig({
 	editor: lexicalEditor({
 		features: () => {
 			return [
+				UnderlineFeature(),
 				BoldFeature(),
 				ItalicFeature(),
 				LinkFeature({
@@ -83,6 +82,7 @@ export default buildConfig({
 							if ("name" in field && field.name === "url") return false;
 							return true;
 						});
+
 						return [
 							...defaultFieldsWithoutUrl,
 							{
@@ -97,17 +97,12 @@ export default buildConfig({
 						];
 					},
 				}),
-				FixedToolbarFeature(),
-				HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3", "h4"] }),
-				OrderedListFeature(),
-				UnderlineFeature(),
-				UnorderedListFeature(),
 			];
 		},
 	}),
 	email: resendAdapter({
-		defaultFromAddress: "mta@s3.co.ke",
-		defaultFromName: "MTA @ S3",
+		defaultFromAddress: "mailer@s3interdev.com",
+		defaultFromName: "Mailer @ S3",
 		apiKey: resendAPIKey,
 	}),
 	globals: [],
