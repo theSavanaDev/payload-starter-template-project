@@ -5,14 +5,15 @@ import { authenticated } from "@/payload/access/authenticated";
 
 import type { CollectionConfig } from "payload";
 
-const Media: CollectionConfig = {
+export const Media: CollectionConfig = {
 	slug: "media",
 	labels: {
 		singular: "Media",
 		plural: "Media",
 	},
 	admin: {
-		defaultColumns: ["filename", "mimeType", "alt", "caption"],
+		defaultColumns: ["filename", "mimeType", "alt", "caption", "createdAt", "updatedAt"],
+		useAsTitle: "alt",
 	},
 	access: {
 		create: authenticated,
@@ -41,5 +42,3 @@ const Media: CollectionConfig = {
 		resizeOptions: { width: 1024 },
 	},
 };
-
-export default Media;
