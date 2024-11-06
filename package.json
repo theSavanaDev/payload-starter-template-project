@@ -7,11 +7,14 @@
 	"scripts": {
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
 		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+		"dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
 		"generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
 		"generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+		"ii": "cross-env NODE_OPTIONS=--no-deprecation pnpm --ignore-workspace install",
 		"lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+		"lint:fix": "cross-env NODE_OPTIONS=--no-deprecation next lint --fix",
 		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+		"reinstall": "cross-env NODE_OPTIONS=--no-deprecation rm -rf node_modules && rm pnpm-lock.yaml && pnpm --ignore-workspace install",
 		"start": "cross-env NODE_OPTIONS=--no-deprecation next start"
 	},
 	"dependencies": {
@@ -35,7 +38,7 @@
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
 		"embla-carousel-react": "^8.3.1",
-		"framer-motion": "^11.11.10",
+		"framer-motion": "^11.11.11",
 		"graphql": "^16.9.0",
 		"jsonwebtoken": "^9.0.2",
 		"lucide-react": "^0.454.0",
@@ -57,9 +60,9 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/escape-html": "^1.0.4",
 		"@types/jsonwebtoken": "^9.0.7",
-		"@types/node": "^22.8.5",
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
+		"@types/node": "^22.9.0",
+		"@types/react": "npm:types-react@19.0.0-rc.1",
+		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
 		"eslint": "^8.57.1",
 		"eslint-config-next": "15.0.2",
 		"postcss": "^8.4.47",
@@ -67,5 +70,18 @@
 		"prettier-plugin-tailwindcss": "^0.6.8",
 		"tailwindcss": "^3.4.14",
 		"typescript": "5.6.3"
+	},
+	"engines": {
+		"node": "^18.20.2 || >=20.9.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"@types/react": "npm:types-react@19.0.0-rc.1",
+			"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+		}
+	},
+	"overrides": {
+		"@types/react": "npm:types-react@19.0.0-rc.1",
+		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
 	}
 }
