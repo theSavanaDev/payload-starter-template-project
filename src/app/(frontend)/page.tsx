@@ -8,7 +8,7 @@ const HomePage = () => {
 		<Container>
 			<article>
 				<section className="pb-36 pt-36">
-					<h1 className="text-4xl font-bold tracking-wide text-sky-800">Payload Starter Template</h1>
+					<h1 className="font-header text-4xl font-bold tracking-wide text-sky-800">Payload Starter Template</h1>
 
 					<p className="my-5">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, cum reprehenderit. Doloremque corrupti aliquid nihil magnam

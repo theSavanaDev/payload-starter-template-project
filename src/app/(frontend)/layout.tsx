@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Inter as FontSans } from "next/font/google";
+import { Comfortaa as FontHeader, Montserrat as FontBody } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
@@ -7,12 +7,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import "@/frontend/global.css";
 
-const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
+const fontHeader = FontHeader({ subsets: ["latin"], variable: "--font-header" });
+const fontBody = FontBody({ subsets: ["latin"], variable: "--font-body" });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={cn("flex h-screen flex-col font-sans antialiased", fontSans.variable)}>
+			<body className={cn("font-body flex h-screen flex-col antialiased", fontHeader.variable, fontBody.variable)}>
 				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
 					<header>Header Goes Here</header>
 
@@ -23,4 +24,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
