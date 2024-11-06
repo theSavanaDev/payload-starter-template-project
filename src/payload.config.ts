@@ -1,16 +1,6 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { resendAdapter } from "@payloadcms/email-resend";
-import {
-	BoldFeature,
-	FixedToolbarFeature,
-	HeadingFeature,
-	ItalicFeature,
-	LinkFeature,
-	UnderlineFeature,
-	lexicalEditor,
-} from "@payloadcms/richtext-lexical";
-import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
-import { seoPlugin } from "@payloadcms/plugin-seo";
+import { BoldFeature, ItalicFeature, LinkFeature, UnderlineFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import { buildConfig } from "payload";
 import path from "path";
@@ -26,34 +16,11 @@ const databaseURI = process.env.NODE_ENV === "development" ? process.env.DATABAS
 const payloadSecret = process.env.PAYLOAD_SECRET!;
 const resendAPIKey = process.env.RESEND_API_KEY!;
 const uploadthingSecret = process.env.UPLOADTHING_SECRET!;
-const publicURL = process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_SERVER_URL_DEV! : process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
 
 export default buildConfig({
 	admin: {
 		importMap: {
 			baseDir: path.resolve(dirname),
-		},
-		livePreview: {
-			breakpoints: [
-				{
-					label: "Mobile",
-					name: "mobile",
-					width: 375,
-					height: 667,
-				},
-				{
-					label: "Tablet",
-					name: "tablet",
-					width: 768,
-					height: 1024,
-				},
-				{
-					label: "Desktop",
-					name: "desktop",
-					width: 1440,
-					height: 900,
-				},
-			],
 		},
 		user: Users.slug,
 	},
@@ -97,28 +64,6 @@ export default buildConfig({
 	}),
 	globals: [],
 	plugins: [
-		formBuilderPlugin({
-			fields: {
-				payment: false,
-			},
-			formOverrides: {
-				fields: ({ defaultFields }) => {
-					return defaultFields.map((field) => {
-						if ("name" in field && field.name === "confirmationMessage") {
-							return {
-								...field,
-								editor: lexicalEditor({
-									features: ({ rootFeatures }) => {
-										return [...rootFeatures, FixedToolbarFeature(), HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3", "h4"] })];
-									},
-								}),
-							};
-						}
-						return field;
-					});
-				},
-			},
-		}),
 		uploadthingStorage({
 			collections: {
 				[Media.slug]: true,
