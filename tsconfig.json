@@ -24,7 +24,8 @@
 			"@/frontend/*": ["./src/app/(frontend)/*"],
 			"@/lib/*": ["./src/lib/*"],
 			"@/payload/*": ["./src/payload/*"],
-			"@payload-config": ["./src/payload.config.ts"]
+			"@payload-config": ["./src/payload.config.ts"],
+			"react": ["./node_modules/@types/react"]
 		},
 		"target": "ES2017"
 	},
