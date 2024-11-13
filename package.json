@@ -1,6 +1,6 @@
 {
 	"name": "payload-starter-template",
-	"version": "0.4.32",
+	"version": "0.4.33",
 	"description": "A blank template to get started with Payload 3.0",
 	"license": "MIT",
 	"type": "module",
