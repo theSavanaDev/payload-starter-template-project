@@ -1,6 +1,7 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { resendAdapter } from "@payloadcms/email-resend";
-import { BoldFeature, ItalicFeature, LinkFeature, UnderlineFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
+import { BoldFeature, ItalicFeature, LinkFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
+import { UnderlineFeature } from "@payloadcms/richtext-lexical";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import { buildConfig } from "payload";
 import path from "path";
@@ -44,12 +45,12 @@ export default buildConfig({
 							...defaultFieldsWithoutUrl,
 							{
 								name: "url",
+								label: ({ t }) => t("fields:enterURL"),
 								type: "text",
+								required: true,
 								admin: {
 									condition: ({ linkType }) => linkType !== "internal",
 								},
-								label: ({ t }) => t("fields:enterURL"),
-								required: true,
 							},
 						];
 					},
