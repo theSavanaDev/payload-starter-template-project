@@ -16,7 +16,7 @@ const dirname = path.dirname(filename);
 const databaseURI = process.env.NODE_ENV === "development" ? process.env.DATABASE_URI_DEV! : process.env.DATABASE_URI_PRD!;
 const payloadSecret = process.env.PAYLOAD_SECRET!;
 const resendAPIKey = process.env.RESEND_API_KEY!;
-const uploadthingSecret = process.env.UPLOADTHING_SECRET!;
+const uploadthingToken = process.env.UPLOADTHING_TOKEN!;
 
 export default buildConfig({
 	admin: {
@@ -70,7 +70,7 @@ export default buildConfig({
 				[Media.slug]: true,
 			},
 			options: {
-				apiKey: uploadthingSecret,
+				token: uploadthingToken,
 				acl: "public-read",
 			},
 		}),
