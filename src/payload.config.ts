@@ -1,7 +1,4 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { resendAdapter } from "@payloadcms/email-resend";
-import { BoldFeature, ItalicFeature, LinkFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
-import { UnderlineFeature } from "@payloadcms/richtext-lexical";
 
 import { buildConfig } from "payload";
 import path from "path";
@@ -11,13 +8,15 @@ import { fileURLToPath } from "url";
 import { Media } from "@/payload/collections/media/schema";
 import { Users } from "@/payload/collections/users/schema";
 
+import { lexical } from "@/payload/fields/lexical/schema";
+import { resend } from "@/payload/fields/resend/schema";
+
 import { plugins } from "@/payload/plugins/schema";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 const databaseURI = process.env.NODE_ENV === "development" ? process.env.DATABASE_URI_DEV! : process.env.DATABASE_URI_PRD!;
 const payloadSecret = process.env.PAYLOAD_SECRET!;
-const resendAPIKey = process.env.RESEND_API_KEY!;
 
 export default buildConfig({
 	admin: {
@@ -28,42 +27,8 @@ export default buildConfig({
 	},
 	collections: [Media, Users],
 	db: mongooseAdapter({ url: databaseURI }),
-	editor: lexicalEditor({
-		features: () => {
-			return [
-				UnderlineFeature(),
-				BoldFeature(),
-				ItalicFeature(),
-				LinkFeature({
-					enabledCollections: [],
-					fields: ({ defaultFields }) => {
-						const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
-							if ("name" in field && field.name === "url") return false;
-							return true;
-						});
-
-						return [
-							...defaultFieldsWithoutUrl,
-							{
-								name: "url",
-								label: ({ t }) => t("fields:enterURL"),
-								type: "text",
-								required: true,
-								admin: {
-									condition: ({ linkType }) => linkType !== "internal",
-								},
-							},
-						];
-					},
-				}),
-			];
-		},
-	}),
-	email: resendAdapter({
-		defaultFromAddress: "mailer@s3interdev.com",
-		defaultFromName: "Mailer @ S3",
-		apiKey: resendAPIKey,
-	}),
+	editor: lexical,
+	email: resend,
 	globals: [],
 	plugins: [...plugins],
 	secret: payloadSecret,
