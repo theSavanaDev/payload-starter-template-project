@@ -15,8 +15,10 @@ const HomePage = () => {
 						impedit, quisquam soluta? Expedita et dolorum quo laudantium odio esse, distinctio nulla hic ea.
 					</p>
 
-					<Button asChild>
-						<Link href="/admin">Admin Area</Link>
+					<Button className="rounded-lg font-semibold uppercase" variant="default" asChild>
+						<Link href="/admin" target="_blank">
+							Admin Area
+						</Link>
 					</Button>
 				</section>
 			</article>

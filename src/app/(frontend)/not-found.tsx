@@ -8,12 +8,14 @@ const NotFound = () => {
 		<Container>
 			<div className="py-64">
 				<div className="prose max-w-none">
-					<h1 style={{ marginBottom: 0 }}>404</h1>
-					<p className="mb-4">The page you are looking for could not be found.</p>
+					<h1 className="text-primary" style={{ marginBottom: 0 }}>
+						404
+					</h1>
+					<p className="mb-4 text-foreground">The page you are looking for could not be found.</p>
 				</div>
 
-				<Button asChild variant="default">
-					<Link href="/">Go Home</Link>
+				<Button className="rounded-lg font-semibold uppercase" variant="default" asChild>
+					<Link href="/">Go To Homepage</Link>
 				</Button>
 			</div>
 		</Container>
