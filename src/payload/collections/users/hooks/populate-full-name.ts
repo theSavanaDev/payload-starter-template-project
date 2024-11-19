@@ -1,7 +1,7 @@
 import type { FieldHook } from "payload";
 
 const populateFullName: FieldHook = async ({ data }) => {
-	return `${data?.lastName}, ${data?.firstName}`;
+	return `${data?.firstName} ${data?.lastName}`;
 };
 
 export default populateFullName;

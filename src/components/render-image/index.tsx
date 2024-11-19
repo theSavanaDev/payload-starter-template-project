@@ -1,8 +1,13 @@
+// <RenderImage className="object-contain" src={src} alt={alt} />"
+// <RenderImage className="object-cover" src={src} alt={alt} />"
+
 import Image from "next/image";
 
-type RenderImageProps = { src: string; alt: string };
+import { cn } from "@/lib/utils";
 
-export const RenderImage = ({ src, alt }: RenderImageProps) => {
+type RenderImageProps = { src: string; alt: string, className?: string };
+
+export const RenderImage = ({ src, alt, className }: RenderImageProps) => {
 	return (
 		<Image
 			src={src}
@@ -11,7 +16,7 @@ export const RenderImage = ({ src, alt }: RenderImageProps) => {
 			priority
 			quality={89}
 			sizes="(max-width: 640px) 100vw, (max-width: 768px) 640px, (max-width: 1024px) 768px, (max-width: 1280px) 1024px, 1280px"
-			className="absolute max-h-full max-w-full object-contain"
+			className={cn("absolute max-h-full max-w-full", className)}
 		/>
 	);
 };
