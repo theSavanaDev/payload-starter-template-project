@@ -1,8 +1,9 @@
-import { mongooseAdapter } from "@payloadcms/db-mongodb";
-
-import { buildConfig } from "payload";
-import path from "path";
 import sharp from "sharp";
+
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { buildConfig } from "payload";
+
+import path from "path";
 import { fileURLToPath } from "url";
 
 import { Media } from "@/payload/collections/media/schema";

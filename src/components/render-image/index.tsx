@@ -1,11 +1,20 @@
-// <RenderImage className="object-contain" src={src} alt={alt} />"
-// <RenderImage className="object-cover" src={src} alt={alt} />"
+/**
+ *
+ * use the `object-contain` utility to resize an element’s content to stay contained within its container.
+ *
+ * <RenderImage className="object-contain" src={src} alt={alt} />
+ *
+ * use the `object-cover` utility to resize an element’s content to cover its container.
+ *
+ * <RenderImage className="object-cover" src={src} alt={alt} />
+ *
+ */
 
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-type RenderImageProps = { src: string; alt: string, className?: string };
+type RenderImageProps = { src: string; alt: string; className?: string };
 
 export const RenderImage = ({ src, alt, className }: RenderImageProps) => {
 	return (
