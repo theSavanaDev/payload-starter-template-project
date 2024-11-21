@@ -1,7 +1,7 @@
 {
 	"name": "payload-starter-template-project",
-	"version": "3.0.3",
-	"description": "Template to get started with Payload 3.0, MongoDB and Tailwind CSS.",
+	"version": "3.0.5",
+	"description": "Template to get started with Next.js 15,Payload 3.0, MongoDB and Tailwind CSS.",
 	"type": "module",
 	"scripts": {
 		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
