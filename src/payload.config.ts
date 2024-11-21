@@ -24,6 +24,9 @@ export default buildConfig({
 		importMap: {
 			baseDir: path.resolve(dirname),
 		},
+		meta: {
+			titleSuffix: " | Payload",
+		},
 		user: Users.slug,
 	},
 	collections: [Media, Users],
