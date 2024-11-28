@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2765607-7916-4718-8256-dd708283b45e/deploy-status)](https://app.netlify.com/sites/payload-st-project/deploys)
+
 # The [XXXXX] Project
 
 Welcome to the repository for The [XXXXX] project. This repository houses the codebase for the dynamic and interactive website, showcasing our
