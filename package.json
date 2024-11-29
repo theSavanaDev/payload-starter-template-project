@@ -23,6 +23,7 @@
 		"@payloadcms/next": "^3.2.1",
 		"@payloadcms/plugin-form-builder": "^3.2.1",
 		"@payloadcms/plugin-seo": "^3.2.1",
+		"@payloadcms/plugin-search": "^3.2.1",
 		"@payloadcms/richtext-lexical": "^3.2.1",
 		"@payloadcms/storage-uploadthing": "^3.2.1",
 		"@payloadcms/ui": "^3.2.1",
